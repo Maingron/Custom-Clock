@@ -18,29 +18,19 @@ if(localStorage.getItem("config1")) {
         // clocks
         "clock1": [
             {
-                "block": "block-test",
-                "color": "orange",
-                "background": "#000",
-                "position": [100,200,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
+                "block": "block-fulldate",
+                "color": "#ffff00",
+                "background": "transparent",
+                "fontsize": "2rem",
+                "position": ["2rem","4.5rem"], // [x,y]
             },
             {
-                "block": "block-hours",
-                "color": "#ffff00",
-                "background": "#000",
-                "position": [100,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
+                "block": "block-fullclock",
+                "color": "#ff0000",
+                "background": "transparent",
+                "fontsize": "2.5rem",
+                "position": ["2rem","2rem"], // [x,y]
             }
-            // {
-            //     "block": "block-minutes",
-            //     "color": "#ffff00",
-            //     "background": "#000",
-            //     "position": [130,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
-            // },
-            // {
-            //     "block": "block-seconds",
-            //     "color": "#ff0000",
-            //     "background": "#000",
-            //     "position": [160,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
-            // }
         ]
     }
 
@@ -113,6 +103,12 @@ function tick(which) {
         return time.getMinutes();
     } else if(which == "seconds") {
         return time.getSeconds();
+    } else if(which == "day") {
+        return time.getDay();
+    } else if(which == "month") {
+        return time.getMonth();
+    } else if(which == "year") {
+        return time.getFullYear();
     } else if(which.includes("block-")) {
         return handleString(document.getElementById(which).innerHTML); // Take from templates
     } else {

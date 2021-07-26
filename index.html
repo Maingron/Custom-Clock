@@ -11,24 +11,33 @@
         </main>
 
         <!-- Template section -->
-        <template id="block-test">
-            |block-test2|
+        <template id="block-hours">
+            |hours|
         </template>
-        <template id="block-test2">
-            |block-fullclock|
+        <template id="block-minutes">
+            |minutes|
+        </template>
+        <template id="block-seconds">
+            |seconds|
         </template>
         <template id="block-fullclock">
             |hours|:|minutes|:|seconds|
         </template>
-        <template id="block-hours" tick="hours">
-            |hours|
+
+
+        <template id="block-day">
+            |day|
         </template>
-        <template id="block-minutes" tick="minutes">
-            |minutes|
+        <template id="block-month">
+            |month|
         </template>
-        <template id="block-seconds" tick="seconds">
-            |seconds|
+        <template id="block-year">
+            |year|
         </template>
+        <template id="block-fulldate">
+            |block-year|-|block-month|-|block-day|
+        </template>
+
         <script src="scripts.js"></script>
     </body>
 </html>
