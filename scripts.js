@@ -40,6 +40,15 @@ if(localStorage.getItem("config1")) {
 
     saveConfig("config1", config);
 }
+function tick(which) {
+    if(which == "hours") {
+        return time.getHours();
+    } else if(which == "minutes") {
+        return time.getMinutes();
+    } else if(which == "seconds") {
+        return time.getSeconds();
+    }
+}
 function loadConfig() {
     return JSON.parse(localStorage.getItem("config1"));
 }
