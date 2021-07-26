@@ -17,6 +17,12 @@ if(localStorage.getItem("config1")) {
         // clocks
         "clock1": [
             {
+                "block": "block-test",
+                "color": "orange",
+                "background": "#000",
+                "position": [100,200,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
+            },
+            {
                 "block": "block-hours",
                 "color": "#ffff00",
                 "background": "#000",
@@ -41,6 +47,21 @@ if(localStorage.getItem("config1")) {
     saveConfig("config1", config);
 }
 
+// Modify templates
+var templates = document.getElementsByTagName("template");
+for(let myTemplate of templates) {
+    var charOccs = 0;
+    console.log(myTemplate.innerHTML.length);
+
+    for(var i = 0; i < myTemplate.innerHTML.length; i++) {
+        if(myTemplate.innerHTML[i] == "|") {
+            charOccs++;
+        }
+    }
+
+    myTemplate.setAttribute("variables",charOccs / 2); // half because every variable has 2
+}
+
 
 for (let myClock1 of config.clock1) { // For every block in config of clock1
 
@@ -50,12 +71,15 @@ for (let myClock1 of config.clock1) { // For every block in config of clock1
     newElement.style.top = myClock1.position[1] + "px";
     newElement.style.left = myClock1.position[0] + "px";
     newElement.innerHTML = document.getElementById(myClock1.block).innerHTML;
+
+    newElement.setAttribute("variables",document.getElementById(myClock1.block).getAttribute("variables"));
     // newElement.id = [i];
     newElement.classList.add("block");
 
     if(newElement.innerHTML.includes("|")) { // Check if we have to update the block regularly
         newElement.classList.add("tick");
         newElement.setAttribute("tick",newElement.innerHTML.split("|")[1].split("|")[0]);
+        newElement.setAttribute("template",myClock1.block); // We will access the variables within the template later so we can refresh everything
     }
 
     clock.appendChild(newElement); // Append block to clock frame
@@ -65,7 +89,10 @@ var tickingElements = document.getElementsByClassName("tick");
 
 window.setInterval(function() {
     for(let myTElement of tickingElements) { // Tick the blocks
-        myTElement.innerHTML = tick(myTElement.getAttribute("tick"));
+        myTElement.innerHTML = document.getElementById(myTElement.getAttribute("template")).innerHTML;
+        for(var j = 0; j < myTElement.getAttribute("variables"); j++) {
+            myTElement.innerHTML = myTElement.innerHTML.replace("|" + myTElement.innerHTML.split("|")[1] + "|", tick(myTElement.innerHTML.split("|")[1])); // Replace variables with actual value
+        }
     }
 
     time = new Date();
@@ -78,7 +105,7 @@ function tick(which) {
         return time.getMinutes();
     } else if(which == "seconds") {
         return time.getSeconds();
-    }
+    } else {}
 }
 
 function loadConfig() {
