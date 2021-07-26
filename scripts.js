@@ -63,20 +63,30 @@ for (let myClock1 of config.clock1) { // For every block in config of clock1
 
     newElement.innerHTML = document.getElementById(myClock1.block).innerHTML;
 
+
     newElement.setAttribute("variables",document.getElementById(myClock1.block).getAttribute("variables"));
     // newElement.id = [i];
     newElement.classList.add("block");
     newElement.setAttribute("template",myClock1.block); // We will access the variables within the template later so we can refresh everything
+
+
+    // if(newElement.innerHTML.includes("|block-")) {
+    //     newElement.classList.add("notick");
+    // }
 
     clock.appendChild(newElement); // Append block to clock frame
 }
 
 window.setInterval(function() {
     for(let myElement of document.getElementsByClassName("block")) { // Tick the blocks
-        myElement.innerHTML = document.getElementById(myElement.getAttribute("template")).innerHTML;
+        // if(myElement.className)
+        var myTempInnerHTML = document.getElementById(myElement.getAttribute("template")).innerHTML;
         for(var j = 0; j < myElement.getAttribute("variables"); j++) {
-            myElement.innerHTML = myElement.innerHTML.replace("|" + myElement.innerHTML.split("|")[1] + "|", tick(myElement.innerHTML.split("|")[1])); // Replace variables with actual value
+            myTempInnerHTML = myTempInnerHTML.replace("|" + myTempInnerHTML.split("|")[1] + "|", tick(myTempInnerHTML.split("|")[1])); // Replace variables with actual value
         }
+
+        // console.log(myElement.innerHTML);
+        myElement.innerHTML = myTempInnerHTML;
     }
 
     time = new Date();
@@ -104,7 +114,7 @@ function tick(which) {
     } else if(which == "year") {
         return time.getFullYear();
     } else if(which.includes("block-")) {
-        return handleString(document.getElementById(which).innerHTML); // Take from templates
+        return "<div>" + handleString(document.getElementById(which).innerHTML) + "</div>"; // Take from templates
     } else {
         return which;
     }
@@ -126,8 +136,12 @@ function reset() {
     document.location.reload();
 }
 
-window.setInterval(function() {
-    document.getElementById("dev-configvalue").innerHTML = JSON.stringify(config);
-},config.ticktime)
+// window.setInterval(function() {
+//     document.getElementById("dev-configvalue").innerHTML = JSON.stringify(config);
+// },config.ticktime)
 
-document.body.style.background = config.background;
+
+
+
+
+clock.style.background = config.background;

@@ -5,10 +5,16 @@
         <title>Custom Clock</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="editing">
         <main id="main">
             <p id="dev-configvalue"></p>
         </main>
+
+        <div id="edit-blocks">
+            <div>
+                test
+            </div>
+        </div>
 
         <!-- Template section -->
         <template id="block-hours">
@@ -38,6 +44,14 @@
             |block-year|-|block-month|-|block-day|
         </template>
 
+        <template id="block-edit">
+            <div class="editdiv">
+                <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)"></div>
+                <div class="resizer" onmousedown="handleAction('resize', this.parentElement.parentElement, event)"></div>
+            </div>
+        </template>
+
         <script src="scripts.js"></script>
+        <script src="edit.js"></script>
     </body>
 </html>

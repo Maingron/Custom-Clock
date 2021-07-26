@@ -1,12 +1,79 @@
 body {
     font-size: 1.4rem;
+    margin: 0;
+    display: block;
+    position: relative;
+    padding: 0;
+    main {
+        z-index: 20;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        width: 100%;
+    }
     .block {
         position: absolute;
         display: inline-block;
         padding: .2rem;
+        div {
+            display: inline-block;
+            position: relative;
+        }
     }
     &,* {
         color: #ff0;
         font-family: -apple-system, system-ui, 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Segoe UI Variable', 'Roboto', 'Tahoma', 'Ubuntu', sans-serif;
+    }
+
+    #edit-blocks {
+        display: none;
+    }
+}
+
+body.editing { // When in editing mode
+    min-height: 120vh;
+
+    .block {
+        user-select: none;
+        .editdiv {
+            position: absolute;
+            height: calc(100% + 10px);
+            width: 100%;
+            top: -10px;
+            background-color: rgba(255,0,0,.2);
+            outline: 1px solid red;
+            border-top: 10px solid blue;
+            box-sizing: border-box;
+            >div {
+                position: absolute;
+                display: inline-block;
+                top:-10px;
+                height: 10px;
+                width: 10px;
+                &.dragger {
+                    cursor: move;
+                    left: 0;
+                    background: lime;
+                }
+                &.resizer {
+                    cursor: e-resize;
+                    left: 10px;
+                    background: orange;
+                }
+            }
+
+        }
+    }
+
+    #edit-blocks {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        min-height: 20vh;
+        width: 100%;
+        background-color: orangered;
+        z-index: 10;
     }
 }
