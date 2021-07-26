@@ -42,15 +42,15 @@ if(localStorage.getItem("config1")) {
 }
 
 
-for (var i = 0; i < config.clock1.length; i++) { // For every block in config of clock1
+for (let myClock1 of config.clock1) { // For every block in config of clock1
 
     var newElement = document.createElement("div");
-    newElement.style.color = config.clock1[i].color;
-    newElement.style.background = config.clock1[i].background;
-    newElement.style.top = config.clock1[i].position[1] + "px";
-    newElement.style.left = config.clock1[i].position[0] + "px";
-    newElement.innerHTML = document.getElementById(config.clock1[i].block).innerHTML;
-    newElement.id = [i];
+    newElement.style.color = myClock1.color;
+    newElement.style.background = myClock1.background;
+    newElement.style.top = myClock1.position[1] + "px";
+    newElement.style.left = myClock1.position[0] + "px";
+    newElement.innerHTML = document.getElementById(myClock1.block).innerHTML;
+    // newElement.id = [i];
     newElement.classList.add("block");
 
     if(newElement.innerHTML.includes("|")) { // Check if we have to update the block regularly
@@ -59,18 +59,13 @@ for (var i = 0; i < config.clock1.length; i++) { // For every block in config of
     }
 
     clock.appendChild(newElement); // Append block to clock frame
-
-    // clock.innerHTML += document.getElementById(config.clock1[i].block);
-
-    // document.getElementById("main").innerHTML += document.getElementById("block-minutes").innerHTML;
 }
 
 var tickingElements = document.getElementsByClassName("tick");
 
 window.setInterval(function() {
-    for(var i = 0; i < tickingElements.length; i++) { // Tick the blocks
-        tickingElements[i].innerHTML = tick(tickingElements[i].getAttribute("tick"));
-        console.log(tickingElements[i].getAttribute("tick"));
+    for(let myTElement of tickingElements) { // Tick the blocks
+        myTElement.innerHTML = tick(myTElement.getAttribute("tick"));
     }
 
     time = new Date();
