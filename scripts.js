@@ -27,19 +27,19 @@ if(localStorage.getItem("config1")) {
                 "color": "#ffff00",
                 "background": "#000",
                 "position": [100,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
-            },
-            {
-                "block": "block-minutes",
-                "color": "#ffff00",
-                "background": "#000",
-                "position": [130,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
-            },
-            {
-                "block": "block-seconds",
-                "color": "#ff0000",
-                "background": "#000",
-                "position": [160,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
             }
+            // {
+            //     "block": "block-minutes",
+            //     "color": "#ffff00",
+            //     "background": "#000",
+            //     "position": [130,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
+            // },
+            // {
+            //     "block": "block-seconds",
+            //     "color": "#ff0000",
+            //     "background": "#000",
+            //     "position": [160,150,-1,-1], // [x,y,unused (-1),unused (-1)] // TODO: Calc size with [x1,y1,x2,y2]
+            // }
         ]
     }
 
@@ -52,7 +52,6 @@ var templates = document.getElementsByTagName("template");
 for(let myTemplate of templates) {
     var charOccs = 0;
     console.log(myTemplate.innerHTML.length);
-
     for(var i = 0; i < myTemplate.innerHTML.length; i++) {
         if(myTemplate.innerHTML[i] == "|") {
             charOccs++;
@@ -98,6 +97,16 @@ window.setInterval(function() {
     time = new Date();
 }, config.ticktime)
 
+
+function handleString(whichString) {
+    var localWhichString = whichString;
+    for(var j = 0; j < localWhichString.split("|").length; j++) {
+        localWhichString = localWhichString.replace("|" + localWhichString.split("|")[1] + "|", tick(localWhichString.split("|")[1])); // Replace variables with actual value
+    }
+    console.log(localWhichString);
+    return localWhichString;
+}
+
 function tick(which) {
     if(which == "hours") {
         return time.getHours();
@@ -105,7 +114,11 @@ function tick(which) {
         return time.getMinutes();
     } else if(which == "seconds") {
         return time.getSeconds();
-    } else {}
+    } else if(which.includes("block-")) {
+        return handleString(document.getElementById(which).innerHTML); // Take from templates
+    } else {
+        return which;
+    }
 }
 
 function loadConfig() {
