@@ -58,8 +58,10 @@ for (let myClock1 of config.clock1) { // For every block in config of clock1
     var newElement = document.createElement("div");
     newElement.style.color = myClock1.color;
     newElement.style.background = myClock1.background;
-    newElement.style.top = myClock1.position[1] + "px";
-    newElement.style.left = myClock1.position[0] + "px";
+    newElement.style.top = myClock1.position[1];
+    newElement.style.left = myClock1.position[0];
+    newElement.style.fontSize = myClock1.fontsize;
+
     newElement.innerHTML = document.getElementById(myClock1.block).innerHTML;
 
     newElement.setAttribute("variables",document.getElementById(myClock1.block).getAttribute("variables"));
