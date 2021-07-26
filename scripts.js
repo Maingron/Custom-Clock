@@ -40,6 +40,17 @@ if(localStorage.getItem("config1")) {
 
     saveConfig("config1", config);
 }
+var tickingElements = document.getElementsByClassName("tick");
+
+window.setInterval(function() {
+    for(var i = 0; i < tickingElements.length; i++) { // Tick the blocks
+        tickingElements[i].innerHTML = tick(tickingElements[i].getAttribute("tick"));
+        console.log(tickingElements[i].getAttribute("tick"));
+    }
+
+    time = new Date();
+}, config.ticktime)
+
 function tick(which) {
     if(which == "hours") {
         return time.getHours();
