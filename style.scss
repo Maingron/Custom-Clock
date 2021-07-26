@@ -1,2 +1,11 @@
 body {
+    font-size: 1.4rem;
+    .block {
+        position: absolute;
+        display: inline-block;
+        padding: .2rem;
+    }
+    &,* {
+        font-family: -apple-system, system-ui, 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Segoe UI Variable', 'Roboto', 'Tahoma', 'Ubuntu', sans-serif;
+    }
 }

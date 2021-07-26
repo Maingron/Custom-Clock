@@ -1,0 +1,11 @@
+body {
+  font-size: 1.4rem;
+}
+body .block {
+  position: absolute;
+  display: inline-block;
+  padding: 0.2rem;
+}
+body, body * {
+  font-family: -apple-system, system-ui, "Helvetica Neue", "Helvetica", "Segoe UI", "Segoe UI Variable", "Roboto", "Tahoma", "Ubuntu", sans-serif;
+}
