@@ -1,4 +1,9 @@
 var config = {};
+var clock = document.getElementById("main");
+var time = new Date();
+
+
+
 if(localStorage.getItem("config1")) {
     console.log("Config found");
     config = loadConfig();
