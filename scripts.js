@@ -104,4 +104,4 @@ function reset() {
 
 window.setInterval(function() {
     document.getElementById("dev-configvalue").innerHTML = JSON.stringify(config);
-},100)
+},config.ticktime)
