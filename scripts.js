@@ -13,6 +13,7 @@ if(localStorage.getItem("config1")) {
     config = { // Fallback / Template config
         // general settings
         "ticktime": 100, // ms
+        "background": "#000",
 
         // clocks
         "clock1": [
@@ -137,4 +138,4 @@ function reset() {
 
 window.setInterval(function() {
     document.getElementById("dev-configvalue").innerHTML = JSON.stringify(config);
-},config.ticktime)
+},config.ticktime)document.body.style.background = config.background;

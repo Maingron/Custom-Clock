@@ -7,5 +7,6 @@ body .block {
   padding: 0.2rem;
 }
 body, body * {
+  color: #ff0;
   font-family: -apple-system, system-ui, "Helvetica Neue", "Helvetica", "Segoe UI", "Segoe UI Variable", "Roboto", "Tahoma", "Ubuntu", sans-serif;
 }
