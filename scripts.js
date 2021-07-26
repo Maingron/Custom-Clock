@@ -99,12 +99,10 @@ window.setInterval(function() {
 
 
 function handleString(whichString) {
-    var localWhichString = whichString;
-    for(var j = 0; j < localWhichString.split("|").length; j++) {
-        localWhichString = localWhichString.replace("|" + localWhichString.split("|")[1] + "|", tick(localWhichString.split("|")[1])); // Replace variables with actual value
+    for(var j = 0; j < whichString.split("|").length; j++) {
+        whichString = whichString.replace("|" + whichString.split("|")[1] + "|", tick(whichString.split("|")[1])); // Replace variables with actual value
     }
-    console.log(localWhichString);
-    return localWhichString;
+    return whichString;
 }
 
 function tick(which) {
