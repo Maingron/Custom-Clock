@@ -42,7 +42,6 @@ if(localStorage.getItem("config1")) {
 var templates = document.getElementsByTagName("template");
 for(let myTemplate of templates) {
     var charOccs = 0;
-    console.log(myTemplate.innerHTML.length);
     for(var i = 0; i < myTemplate.innerHTML.length; i++) {
         if(myTemplate.innerHTML[i] == "|") {
             charOccs++;
@@ -129,4 +128,6 @@ function reset() {
 
 window.setInterval(function() {
     document.getElementById("dev-configvalue").innerHTML = JSON.stringify(config);
-},config.ticktime)document.body.style.background = config.background;
+},config.ticktime)
+
+document.body.style.background = config.background;
