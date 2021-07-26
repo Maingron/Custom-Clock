@@ -65,23 +65,16 @@ for (let myClock1 of config.clock1) { // For every block in config of clock1
     newElement.setAttribute("variables",document.getElementById(myClock1.block).getAttribute("variables"));
     // newElement.id = [i];
     newElement.classList.add("block");
-
-    if(newElement.innerHTML.includes("|")) { // Check if we have to update the block regularly
-        newElement.classList.add("tick");
-        newElement.setAttribute("tick",newElement.innerHTML.split("|")[1].split("|")[0]);
-        newElement.setAttribute("template",myClock1.block); // We will access the variables within the template later so we can refresh everything
-    }
+    newElement.setAttribute("template",myClock1.block); // We will access the variables within the template later so we can refresh everything
 
     clock.appendChild(newElement); // Append block to clock frame
 }
 
-var tickingElements = document.getElementsByClassName("tick");
-
 window.setInterval(function() {
-    for(let myTElement of tickingElements) { // Tick the blocks
-        myTElement.innerHTML = document.getElementById(myTElement.getAttribute("template")).innerHTML;
-        for(var j = 0; j < myTElement.getAttribute("variables"); j++) {
-            myTElement.innerHTML = myTElement.innerHTML.replace("|" + myTElement.innerHTML.split("|")[1] + "|", tick(myTElement.innerHTML.split("|")[1])); // Replace variables with actual value
+    for(let myElement of document.getElementsByClassName("block")) { // Tick the blocks
+        myElement.innerHTML = document.getElementById(myElement.getAttribute("template")).innerHTML;
+        for(var j = 0; j < myElement.getAttribute("variables"); j++) {
+            myElement.innerHTML = myElement.innerHTML.replace("|" + myElement.innerHTML.split("|")[1] + "|", tick(myElement.innerHTML.split("|")[1])); // Replace variables with actual value
         }
     }
 
