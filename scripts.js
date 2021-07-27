@@ -129,7 +129,9 @@ function loadConfig() {
 }
 
 function saveConfig(which, value) {
-    localStorage.setItem("config1", JSON.stringify(value));
+    // Ignore any parameters for now
+    // TODO: Don't ignore parameters
+    localStorage.setItem("config1", JSON.stringify(config));
 }
 
 
