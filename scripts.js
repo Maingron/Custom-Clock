@@ -81,19 +81,23 @@ function handleString(whichString) {
     return whichString;
 }
 
-function tick(which) {
+function tick(which) { // Render template values
     if(which == "hours") {
         return time.getHours();
     } else if(which == "minutes") {
         return time.getMinutes();
     } else if(which == "seconds") {
         return time.getSeconds();
+    } else if(which == "milliseconds") {
+        return time.getMilliseconds();
     } else if(which == "day") {
         return time.getDay();
     } else if(which == "month") {
         return time.getMonth();
     } else if(which == "year") {
         return time.getFullYear();
+    } else if(which == "weekdayName") {
+        return returnWeekday(time.getDay());
     } else if(which.includes("block-")) {
         return "<div>" + handleString(document.getElementById(which).innerHTML) + "</div>"; // Take from templates
     } else {
@@ -101,6 +105,25 @@ function tick(which) {
     }
 }
 
+function returnWeekday(which) {
+    switch (+which) {
+        case 1:
+            return lang.Monday
+        case 2:
+            return lang.Tuesday
+        case 3:
+            return lang.Wednesday
+        case 4:
+            return lang.Thursday
+        case 5:
+            return lang.Friday
+        case 6:
+            return lang.Saturday
+        case 7:
+            return lang.Sunday
+        default:
+            return "Day of Week: " + which
+    }
 }
 
 
