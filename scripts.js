@@ -148,6 +148,9 @@ function reset() {
 
 
 
-
+if(config.edit == true) {
+    document.body.classList.add("editing");
+    console.log("editing");
+}
 
 clock.style.background = config.background;

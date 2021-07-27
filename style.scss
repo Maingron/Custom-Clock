@@ -4,6 +4,27 @@ body {
     display: block;
     position: relative;
     padding: 0;
+
+    .edittools {
+        outline: 1px solid red;
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        right: 0;
+        height: auto;
+        width: auto;
+        &,button {
+            font-size: 1.5rem;
+        }
+        button {
+            border: 0;
+            background: transparent;
+            &:hover {
+                background: rgba(255,255,255,.4);
+            }
+        }
+    }
+
     main {
         z-index: 20;
         height: 100vh;

@@ -7,6 +7,10 @@
     </head>
     <body class="editing">
         <main id="main">
+            <div class="edittools">
+                <button class="editpen" onclick="config.edit = !config.edit; saveConfig()">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
+            </div>
+
             <p id="dev-configvalue"></p>
         </main>
 

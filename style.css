@@ -5,6 +5,25 @@ body {
   position: relative;
   padding: 0;
 }
+body .edittools {
+  outline: 1px solid red;
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+}
+body .edittools, body .edittools button {
+  font-size: 1.5rem;
+}
+body .edittools button {
+  border: 0;
+  background: transparent;
+}
+body .edittools button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
 body main {
   z-index: 20;
   height: 100vh;
