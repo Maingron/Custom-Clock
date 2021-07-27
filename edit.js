@@ -48,7 +48,11 @@ function handleAction(whichType, applyTo, event) {
         drag(applyTo);
     } else if (whichType == "resize") {
         mouseResize = applyTo;
-        resize(applyTo);
+        if(event.srcElement.classList.contains("smaller")) {
+            resize(applyTo, "smaller");
+        } else if(event.srcElement.classList.contains("bigger")){
+            resize(applyTo, "bigger");
+        }
     } else if (whichType == "move") {
         if(mouseDrag != null) {
             drag(mouseDrag);
