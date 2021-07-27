@@ -27,22 +27,6 @@ if(localStorage.getItem("config1")) {
 
         // clocks
         "clock1": [
-            {
-                "block": "block-fulldate",
-                "color": "#ffff00",
-                "background": "transparent",
-                "fontsize": "2rem",
-                "position": ["2rem","4.5rem"], // [x,y]
-                "scale": 1
-            },
-            {
-                "block": "block-fullclock",
-                "color": "#ff0000",
-                "background": "transparent",
-                "fontsize": "2.5rem",
-                "position": ["2rem","2rem"], // [x,y]
-                "scale": 1
-            }
         ]
     }
 
@@ -65,23 +49,28 @@ for(let myTemplate of templates) {
 
 
 for (let myClock1 of config.clock1) { // For every block in config of clock1
+    spawnBlock(myClock1);
+}
 
+function spawnBlock(which) {
     var newElement = document.createElement("div");
-    newElement.style.color = myClock1.color;
-    newElement.style.background = myClock1.background;
-    newElement.style.top = myClock1.position[1];
-    newElement.style.left = myClock1.position[0];
-    newElement.style.fontSize = myClock1.fontsize;
+    newElement.style.color = which.color;
+    newElement.style.background = which.background;
+    newElement.style.top = which.position[1];
+    newElement.style.left = which.position[0];
+    newElement.style.fontSize = which.fontsize;
 
-    newElement.style.scale = myClock1.scale;
+    newElement.style.scale = which.scale;
 
-    newElement.innerHTML = document.getElementById(myClock1.block).innerHTML;
+    newElement.innerHTML = document.getElementById(which.block).innerHTML;
+
+    newElement.id = which.id;
 
 
-    newElement.setAttribute("variables",document.getElementById(myClock1.block).getAttribute("variables"));
+    newElement.setAttribute("variables",document.getElementById(which.block).getAttribute("variables"));
     // newElement.id = [i];
     newElement.classList.add("block");
-    newElement.setAttribute("template",myClock1.block); // We will access the variables within the template later so we can refresh everything
+    newElement.setAttribute("template",which.block); // We will access the variables within the template later so we can refresh everything
 
 
     // if(newElement.innerHTML.includes("|block-")) {
@@ -89,6 +78,7 @@ for (let myClock1 of config.clock1) { // For every block in config of clock1
     // }
 
     clock.appendChild(newElement); // Append block to clock frame
+
 }
 
 window.setInterval(function() {
@@ -160,7 +150,30 @@ function reset() {
 
 if(config.edit == true) {
     document.body.classList.add("editing");
-    console.log("editing");
 }
 
 clock.style.background = config.background;
+
+
+
+
+function addBlock(which, values = {}) {
+    config.clock1[config.clock1.length] = JSON.parse(JSON.stringify(config.dummyblock));
+    config.clock1[config.clock1.length - 1].block = which;
+    config.clock1[config.clock1.length - 1].id = config.clock1.length - 1;
+
+    console.log(values);
+
+    config.clock1[config.clock1.length - 1] = Object.assign({}, config.clock1[config.clock1.length - 1], values);
+
+    saveConfig();
+
+    console.log(config.clock1[config.clock1.length - 1]);
+    spawnBlock(config.clock1[config.clock1.length - 1]);
+}
+
+if(config.clock1.length == 0) { // init
+    addBlock("block-fullclock", {"color":"#fff", "position":["100px","100px"]});
+    addBlock("block-fulldate", {"color": "#ccc", "position": ["100px","150px"]});
+}
+
