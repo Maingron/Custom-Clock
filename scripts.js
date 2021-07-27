@@ -1,38 +1,5 @@
-var config = {};
 var clock = document.getElementById("main");
 var time = new Date();
-
-
-
-if(localStorage.getItem("config1")) {
-    console.log("Config found");
-    config = loadConfig();
-} else {
-    console.log("Config not found; Creating new config");
-
-    config = { // Fallback / Template config
-        // general settings
-        "ticktime": 100, // ms
-        "background": "#000",
-
-        "dummyblock": {
-            "block": "",
-            "color": "#ffff00",
-            "background": "transparent",
-            "fontsize": "2rem",
-            "position": ["2rem","4.5rem"], // [x,y]
-            "scale": 1,
-            "id": 9999
-        },
-
-        // clocks
-        "clock1": [
-        ]
-    }
-
-
-    saveConfig("config1", config);
-}
 
 // Modify templates
 var templates = document.getElementsByTagName("template");
@@ -130,14 +97,6 @@ function tick(which) {
     }
 }
 
-function loadConfig() {
-    return JSON.parse(localStorage.getItem("config1"));
-}
-
-function saveConfig(which, value) {
-    // Ignore any parameters for now
-    // TODO: Don't ignore parameters
-    localStorage.setItem("config1", JSON.stringify(config));
 }
 
 
