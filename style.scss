@@ -1,3 +1,5 @@
+$editbuttonSize: 20px;
+
 body {
     font-size: 1.4rem;
     margin: 0;
@@ -68,19 +70,24 @@ body.editing { // When in editing mode
         }
         .editdiv {
             position: absolute;
-            height: calc(100% + 10px);
+            height: calc(100% + #{$editbuttonSize} / 2);
             width: 100%;
-            top: -10px;
+            top: -($editbuttonSize / 2);
             background-color: rgba(255,0,0,.2);
             outline: 1px solid red;
-            border-top: 10px solid blue;
+            border-top: ($editbuttonSize / 2) solid blue;
             box-sizing: border-box;
             >div {
                 position: absolute;
                 display: inline-block;
-                top:-10px;
-                height: 10px;
-                width: 10px;
+                top:-($editbuttonSize / 2);
+                height: $editbuttonSize;
+                width: $editbuttonSize;
+                &,* {
+                    font-size: $editbuttonSize;
+                    text-align: center;
+                    line-height: 1;
+                }
                 &.dragger {
                     cursor: move;
                     left: 0;
@@ -88,11 +95,11 @@ body.editing { // When in editing mode
                 }
                 &.resizer {
                     &.smaller {
-                        left: 10px;
+                        left: 1 * $editbuttonSize;
                         background: orange;
                     }
                     &.bigger {
-                        left: 20px;
+                        left: 2 * $editbuttonSize;
                         background: orangered;
                     }
                 }

@@ -67,7 +67,7 @@ body.editing .block > div .editdiv {
 }
 body.editing .block .editdiv {
   position: absolute;
-  height: calc(100% + 10px);
+  height: calc(100% + 20px / 2);
   width: 100%;
   top: -10px;
   background-color: rgba(255, 0, 0, 0.2);
@@ -80,8 +80,13 @@ body.editing .block .editdiv > div {
   position: absolute;
   display: inline-block;
   top: -10px;
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
+}
+body.editing .block .editdiv > div, body.editing .block .editdiv > div * {
+  font-size: 20px;
+  text-align: center;
+  line-height: 1;
 }
 body.editing .block .editdiv > div.dragger {
   cursor: move;
@@ -89,12 +94,16 @@ body.editing .block .editdiv > div.dragger {
   background: lime;
 }
 body.editing .block .editdiv > div.resizer.smaller {
-  left: 10px;
+  left: 20px;
   background: orange;
 }
 body.editing .block .editdiv > div.resizer.bigger {
-  left: 20px;
+  left: 40px;
   background: orangered;
+}
+body.editing .block .editdiv > div.remover {
+  left: 60px;
+  background: red;
 }
 body.editing #edit-blocks {
   position: relative;
