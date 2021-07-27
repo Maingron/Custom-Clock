@@ -47,7 +47,8 @@
         <template id="block-edit">
             <div class="editdiv">
                 <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)"></div>
-                <div class="resizer" onmousedown="handleAction('resize', this.parentElement.parentElement, event)"></div>
+                <div class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>
+                <div class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>
             </div>
         </template>
 

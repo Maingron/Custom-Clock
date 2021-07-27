@@ -57,9 +57,14 @@ body.editing { // When in editing mode
                     background: lime;
                 }
                 &.resizer {
-                    cursor: e-resize;
-                    left: 10px;
-                    background: orange;
+                    &.smaller {
+                        left: 10px;
+                        background: orange;
+                    }
+                    &.bigger {
+                        left: 20px;
+                        background: orangered;
+                    }
                 }
             }
 

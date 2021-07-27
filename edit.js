@@ -24,10 +24,17 @@ function drag(which) {
     }
 }
 
-function resize(which) {
-    if(mouseClick == true) {
-        which.style.scale = mousePos[0] / 100;
+function resize(which,direction) {
+    console.log(which);
+    if(direction == "bigger") {
+        which.style.scale = +which.style.scale + .1;
+    } else if(direction == "smaller") {
+        which.style.scale = +which.style.scale - .1;
     }
+    // if(mouseClick == true) {
+    //     // console.log(which);
+    //     which.style.scale = mousePos[0] / 100;
+    // }
 }
 
 function handleAction(whichType, applyTo, event) {

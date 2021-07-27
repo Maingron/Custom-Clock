@@ -62,10 +62,13 @@ body.editing .block .editdiv > div.dragger {
   left: 0;
   background: lime;
 }
-body.editing .block .editdiv > div.resizer {
-  cursor: e-resize;
+body.editing .block .editdiv > div.resizer.smaller {
   left: 10px;
   background: orange;
+}
+body.editing .block .editdiv > div.resizer.bigger {
+  left: 20px;
+  background: orangered;
 }
 body.editing #edit-blocks {
   position: relative;

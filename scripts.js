@@ -23,6 +23,7 @@ if(localStorage.getItem("config1")) {
                 "background": "transparent",
                 "fontsize": "2rem",
                 "position": ["2rem","4.5rem"], // [x,y]
+                "scale": 1
             },
             {
                 "block": "block-fullclock",
@@ -30,6 +31,7 @@ if(localStorage.getItem("config1")) {
                 "background": "transparent",
                 "fontsize": "2.5rem",
                 "position": ["2rem","2rem"], // [x,y]
+                "scale": 1
             }
         ]
     }
@@ -60,6 +62,8 @@ for (let myClock1 of config.clock1) { // For every block in config of clock1
     newElement.style.top = myClock1.position[1];
     newElement.style.left = myClock1.position[0];
     newElement.style.fontSize = myClock1.fontsize;
+
+    newElement.style.scale = myClock1.scale;
 
     newElement.innerHTML = document.getElementById(myClock1.block).innerHTML;
 
