@@ -94,5 +94,8 @@ document.addEventListener("mousedown", function() {
 
 
 for(myTemplate of templates) {
-    document.getElementById("edit-blocks").innerHTML += "<button onclick='addBlock(\""+myTemplate.id+"\")'>"+myTemplate.id+"</button>";
+    console.log(myTemplate.innerHTML);
+    if(!myTemplate.classList.contains("ignore")) {
+        document.getElementById("edit-blocks").innerHTML += "<button onclick='addBlock(\""+myTemplate.id+"\")'>"+myTemplate.id + "<br>"+myTemplate.getAttribute("description")+"<br><br><code>" + myTemplate.innerHTML+"</code></div>";
+    }
 }

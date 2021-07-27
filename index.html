@@ -12,22 +12,20 @@
             </div>
 
             <p id="dev-configvalue"></p>
+
         </main>
 
         <div id="edit-blocks">
-            <div>
-                test
-            </div>
         </div>
 
         <!-- Template section -->
-        <template id="block-hours">
+        <template id="block-hours" description="Displays the current hour">
             |hours|
         </template>
-        <template id="block-minutes">
+        <template id="block-minutes" description="Displays the current minute">
             |minutes|
         </template>
-        <template id="block-seconds">
+        <template id="block-seconds" description="Displays the current second">
             |seconds|
         </template>
         <template id="block-fullclock">
@@ -48,7 +46,7 @@
             |block-year|-|block-month|-|block-day|
         </template>
 
-        <template id="block-edit">
+        <template id="block-edit" class="ignore">
             <div class="editdiv">
                 <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)"></div>
                 <div class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>

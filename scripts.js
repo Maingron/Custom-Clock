@@ -45,6 +45,12 @@ for(let myTemplate of templates) {
     }
 
     myTemplate.setAttribute("variables",charOccs / 2); // half because every variable has 2
+
+
+
+    if(!myTemplate.getAttribute("description")) {
+        myTemplate.setAttribute("description", ""); // Fallback if no description is set so we dont get an ugly "null"
+    }
 }
 
 
