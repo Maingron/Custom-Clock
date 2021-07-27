@@ -96,6 +96,11 @@ body.editing { // When in editing mode
                         background: orangered;
                     }
                 }
+
+                &.remover {
+                    left: 3 * $editbuttonSize;
+                    background: red;
+                }
             }
 
         }

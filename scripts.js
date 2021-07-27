@@ -178,6 +178,25 @@ function addBlock(which, values = {}) {
     spawnBlock(config.clock1[config.clock1.length - 1]);
 }
 
+
+
+function removeBlock(which) {
+    for(var i = parseInt(which.id); i < config.clock1.length; i++) {
+        config.clock1[i] = config.clock1[i + 1];
+        if(i < config.clock1.length - 1) {
+            config.clock1[i].id = i;
+        }
+        console.log("done for: " + i);
+    }
+    config.clock1.pop();
+    saveConfig();
+    which.style.display = "none";
+    which.outerHTML = "";
+    // config.clock1[config.clock1.length - 1]
+}
+
+
+
 if(config.clock1.length == 0) { // init
     addBlock("block-fullclock", {"color":"#fff", "position":["100px","100px"]});
     addBlock("block-fulldate", {"color": "#ccc", "position": ["100px","150px"]});

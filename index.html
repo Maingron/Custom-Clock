@@ -51,6 +51,7 @@
                 <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)"></div>
                 <div class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>
                 <div class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>
+                <div class="remover" onclick="removeBlock(this.parentElement.parentElement)">x</div>
             </div>
         </template>
 
