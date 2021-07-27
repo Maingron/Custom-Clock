@@ -82,18 +82,36 @@ function handleString(whichString) {
 }
 
 function tick(which) { // Render template values
+    var result = "";
     if(which == "hours") {
-        return time.getHours();
+        result = time.getHours();
+        if(result.toString().length == 1) {
+            result = "0" + result;
+        }
     } else if(which == "minutes") {
-        return time.getMinutes();
+        result = time.getMinutes();
+        if(result.toString().length == 1) {
+            result = "0" + result;
+        }
     } else if(which == "seconds") {
-        return time.getSeconds();
+        result = time.getSeconds();
+        if(result.toString().length == 1) {
+            result = "0" + result;
+        }
     } else if(which == "milliseconds") {
         return time.getMilliseconds();
+
     } else if(which == "day") {
-        return time.getDay();
+        result = time.getDay();
+        result
+        if(result.toString().length == 1) {
+            result = "0" + result;
+        }
     } else if(which == "month") {
-        return time.getMonth();
+        result = time.getMonth();
+        if(result.toString().length == 1) {
+            result = "0" + result;
+        }
     } else if(which == "year") {
         return time.getFullYear();
     } else if(which == "weekdayName") {
@@ -103,6 +121,8 @@ function tick(which) { // Render template values
     } else {
         return which;
     }
+
+    return result;
 }
 
 function returnWeekday(which) {
