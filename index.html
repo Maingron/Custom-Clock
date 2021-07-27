@@ -5,10 +5,10 @@
         <title>Custom Clock</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body class="editing">
+    <body>
         <main id="main">
             <div class="edittools">
-                <button class="editpen" onclick="config.edit = !config.edit; saveConfig()">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
+                <button class="editpen" onclick="config.edit = !config.edit; saveConfig();window.location.reload()">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
             </div>
 
             <p id="dev-configvalue"></p>

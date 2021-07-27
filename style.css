@@ -42,7 +42,7 @@ body .block div {
   position: relative;
 }
 body, body * {
-  color: #ff0;
+  color: #f00;
   font-family: -apple-system, system-ui, "Helvetica Neue", "Helvetica", "Segoe UI", "Segoe UI Variable", "Roboto", "Tahoma", "Ubuntu", sans-serif;
 }
 body #edit-blocks {
@@ -57,6 +57,9 @@ body.editing .block {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+body.editing .block > div .editdiv {
+  display: none;
 }
 body.editing .block .editdiv {
   position: absolute;

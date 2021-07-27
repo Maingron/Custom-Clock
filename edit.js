@@ -21,23 +21,28 @@ function drag(which) {
         which.style.left = mousePos[0] + "px";
         which.style.top = mousePos[1] + "px";
         // which.style.top = mousePos[1] - (which.offsetHeight / 2) + "px";
+
+        if(which.id) {
+            config.clock1[which.id].position = [which.style.left, which.style.top];
+        }
+
     }
 }
 
 function resize(which,direction) {
-    console.log(which);
     if(direction == "bigger") {
         which.style.scale = +which.style.scale + .1;
     } else if(direction == "smaller") {
         which.style.scale = +which.style.scale - .1;
     }
-    // if(mouseClick == true) {
-    //     // console.log(which);
-    //     which.style.scale = mousePos[0] / 100;
-    // }
+
+    if(which.id) {
+        config.clock1[which.id].scale = which.style.scale;
+    }
 }
 
 function handleAction(whichType, applyTo, event) {
+
     // mousePos[2] = event.mouse
     mousePos[2] = event.screenX;
     mousePos[3] = event.screenY;
@@ -62,6 +67,7 @@ function handleAction(whichType, applyTo, event) {
             resize(mouseResize);
         }
     }
+    saveConfig();
 }
 
 
@@ -85,3 +91,8 @@ document.addEventListener("mouseup", function() {
 document.addEventListener("mousedown", function() {
     mouseClick = true;
 })
+
+
+for(myTemplate of templates) {
+    document.getElementById("edit-blocks").innerHTML += "<button onclick='addBlock(\""+myTemplate.id+"\")'>"+myTemplate.id+"</button>";
+}

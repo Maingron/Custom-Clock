@@ -43,7 +43,7 @@ body {
         }
     }
     &,* {
-        color: #ff0;
+        color: #f00;
         font-family: -apple-system, system-ui, 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Segoe UI Variable', 'Roboto', 'Tahoma', 'Ubuntu', sans-serif;
     }
 
@@ -57,6 +57,11 @@ body.editing { // When in editing mode
 
     .block {
         user-select: none;
+        &>div {
+            .editdiv {
+                display: none;
+            }
+        }
         .editdiv {
             position: absolute;
             height: calc(100% + 10px);
