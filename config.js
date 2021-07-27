@@ -3,11 +3,6 @@ if(localStorage.getItem("config1")) {
     console.log("Config found");
     config = loadConfig();
 
-    if(config.edit == true) { // Ensure editing pleasure
-        config.ticktime = config.editticktime;
-    } else {
-        config.ticktime = config.prodticktime;
-    }
 
 } else {
     console.log("Config not found; Creating new config");
@@ -16,7 +11,7 @@ if(localStorage.getItem("config1")) {
 
     config = { // Fallback / Template config
         // general settings
-        "editticktime": (1000 / 10), // ms
+        "editticktime": (1000 / 2), // ms
         "prodticktime": (1000 / 60), // ms
         "ticktime": config.prodticktime, // ms
         "background": "#000",
@@ -41,8 +36,11 @@ if(localStorage.getItem("config1")) {
 }
 
 
-
-
+if(config.edit == true) { // Ensure editing pleasure
+    config.ticktime = config.editticktime;
+} else {
+    config.ticktime = config.prodticktime;
+}
 
 function loadConfig() {
     return JSON.parse(localStorage.getItem("config1"));

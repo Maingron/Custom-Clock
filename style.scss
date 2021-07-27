@@ -77,12 +77,13 @@ body.editing { // When in editing mode
             outline: 1px solid red;
             border-top: ($editbuttonSize / 2) solid blue;
             box-sizing: border-box;
-            >div {
+            >button {
                 position: absolute;
                 display: inline-block;
                 top:-($editbuttonSize / 2);
                 height: $editbuttonSize;
                 width: $editbuttonSize;
+                border:0;
                 &,* {
                     font-size: $editbuttonSize;
                     text-align: center;

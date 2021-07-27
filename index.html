@@ -54,10 +54,10 @@
 
         <template id="block-edit" class="ignore">
             <div class="editdiv">
-                <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)">↝</div>
-                <div class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)">+</div>
-                <div class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)">-</div>
-                <div class="remover" onclick="removeBlock(this.parentElement.parentElement)">x</div>
+                <button class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)">↝</button>
+                <button class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)">+</button>
+                <button class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)">-</button>
+                <button class="remover" onclick="removeBlock(this.parentElement.parentElement)">x</button>
             </div>
         </template>
 
