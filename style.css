@@ -4,10 +4,14 @@ body {
   display: block;
   position: relative;
   padding: 0;
+  overflow: hidden;
+}
+body p, body b, body a, body span, body button {
+  color: red;
 }
 body .edittools {
-  outline: 1px solid red;
-  position: absolute;
+  position: fixed;
+  z-index: 999;
   display: inline-block;
   top: 0;
   right: 0;
@@ -42,7 +46,6 @@ body .block div {
   position: relative;
 }
 body, body * {
-  color: #f00;
   font-family: -apple-system, system-ui, "Helvetica Neue", "Helvetica", "Segoe UI", "Segoe UI Variable", "Roboto", "Tahoma", "Ubuntu", sans-serif;
 }
 body #edit-blocks {
@@ -51,6 +54,7 @@ body #edit-blocks {
 
 body.editing {
   min-height: 120vh;
+  overflow: auto;
 }
 body.editing .block {
   -webkit-user-select: none;
