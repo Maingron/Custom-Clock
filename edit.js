@@ -3,9 +3,12 @@ if(config.edit == true) { // Only load edit tools if we want to edit
     var mouseClick = false; // If mouse is down
     var mouseDrag = null; // Block to drag
     var mouseResize = null; // Block to resize
-    for(let myTemplate of templates) {
-        myTemplate.innerHTML = document.getElementById("block-edit").innerHTML + myTemplate.innerHTML;
-    }
+
+    window.setTimeout(function() { // Make sure we don't end up with this pasted everywhere by waiting until everything else is rendered
+        for(let myTemplate of templates) {
+            myTemplate.innerHTML = document.getElementById("block-edit").innerHTML + myTemplate.innerHTML;
+        }
+    }, config.ticktime);
 
     function drag(which) {
         if(mouseClick == true) {
