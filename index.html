@@ -9,14 +9,28 @@
         <main id="main">
             <div class="edittools">
                 <button class="editpen" onclick="config.edit = !config.edit; saveConfig();window.location.reload()">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
+                <button class="addblock" onclick="addBlock('block-fullclock')">+</button> <!-- Save opposite value of config.edit (true -> false)-->
             </div>
 
             <p id="dev-configvalue"></p>
 
         </main>
 
-        <div id="edit-blocks">
-        </div>
+
+        <fieldset class="designer" id="designer" disabled="disabled">
+            <label for="designer-fontcolor">Fontcolor</label>
+            <input type="color" id="designer-fontcolor" onchange="designer('color', this.value)">
+
+            <label for="designer-scale">Scale</label>
+            <input type="number" min="0" max="8" id="designer-scale" onchange="designer('scale', this.value)">
+
+            <label for="designer-fontsize">Font Size (rem)</label>
+            <input type="number" min="0" max="8" id="designer-fontsize" onchange="designer('fontsize', this.value + 'rem')">
+
+            <label for="designer-block">Block Type</label>
+            <select id="designer-block" onchange="designer('block', this.value)">
+            </select>
+        </fieldset>
 
         <!-- Template section -->
         <template id="block-hours" description="lang.DisplaysthecurrentHour">
@@ -54,10 +68,11 @@
 
         <template id="block-edit" class="ignore">
             <div class="editdiv">
-                <button class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)">↝</button>
-                <button class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)">+</button>
-                <button class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)">-</button>
-                <button class="remover" onclick="removeBlock(this.parentElement.parentElement)">x</button>
+                <button class="editbutton dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)">↝</button>
+                <button class="editbutton resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)">+</button>
+                <button class="editbutton resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)">-</button>
+                <button class="editbutton designer" onclick="setDesigner(this.parentElement.parentElement)">✎</button>
+                <button class="editbutton remover" onclick="removeBlock(this.parentElement.parentElement)">x</button>
             </div>
         </template>
 

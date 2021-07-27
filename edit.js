@@ -64,6 +64,35 @@ if(config.edit == true) { // Only load edit tools if we want to edit
         saveConfig();
     }
 
+    var designerApplyTo;
+
+    function setDesigner(which) {
+        document.getElementById("designer").disabled = false;
+        document.getElementById("designer-fontcolor").value = config.clock1[which.id].color;
+        document.getElementById("designer-scale").value = config.clock1[which.id].scale;
+        document.getElementById("designer-fontsize").value = parseInt(config.clock1[which.id].fontsize);
+        document.getElementById("designer-block").value = config.clock1[which.id].block;
+        console.log(which);
+        designerApplyTo = which.id;
+
+        // document.getElementById("designer").style.left = config.clock1[designerApplyTo].position[0];
+        // document.getElementById("designer").style.top = -60 + parseInt(config.clock1[designerApplyTo].position[1]) + "px";
+    }
+
+    function designer(key, value) {
+        config.clock1[designerApplyTo][key] = value;
+
+        document.getElementById(designerApplyTo).outerHTML = ""; // Despawn
+        spawnBlock(config.clock1[designerApplyTo]); // Respawn
+
+        saveConfig();
+
+    }
+
+
+
+
+
 
     document.addEventListener("mousemove", function(event) {
         mousePos[0] = event.clientX;
@@ -90,7 +119,8 @@ if(config.edit == true) { // Only load edit tools if we want to edit
     for(myTemplate of templates) {
         console.log(myTemplate.innerHTML);
         if(!myTemplate.classList.contains("ignore")) {
-            document.getElementById("edit-blocks").innerHTML += "<button onclick='addBlock(\""+myTemplate.id+"\")'>"+myTemplate.id + "<br>"+myTemplate.getAttribute("description")+"<br><br><code>" + myTemplate.innerHTML+"</code></div>";
+            document.getElementById("designer-block").innerHTML += "<option value='" + myTemplate.id + "'>" + myTemplate.id + "&nbsp;&nbsp;&nbsp;"+myTemplate.getAttribute("description")+"&nbsp;&nbsp;&nbsp;<code>" + myTemplate.innerHTML + "</code></option>";
+
         }
     }
 }

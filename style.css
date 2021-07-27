@@ -6,8 +6,11 @@ body {
   padding: 0;
   overflow: hidden;
 }
-body p, body b, body a, body span, body button {
+body p, body b, body a, body span, body button:not(.editbutton) {
   color: red;
+}
+body .designer {
+  display: none;
 }
 body .edittools {
   position: fixed;
@@ -17,6 +20,9 @@ body .edittools {
   right: 0;
   height: auto;
   width: auto;
+}
+body .edittools .addblock {
+  display: none;
 }
 body .edittools, body .edittools button {
   font-size: 1.5rem;
@@ -48,13 +54,26 @@ body .block div {
 body, body * {
   font-family: -apple-system, system-ui, "Helvetica Neue", "Helvetica", "Segoe UI", "Segoe UI Variable", "Roboto", "Tahoma", "Ubuntu", sans-serif;
 }
-body #edit-blocks {
-  display: none;
-}
 
 body.editing {
-  min-height: 120vh;
+  min-height: calc(100vh + 80px);
   overflow: auto;
+}
+body.editing code {
+  background-color: orange;
+}
+body.editing #designer {
+  display: inline-block;
+  height: auto;
+  width: 100%;
+  position: sticky;
+  background: rgba(255, 255, 255, 0.5);
+  bottom: 0;
+  padding: 1.2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0;
+  margin: 0;
 }
 body.editing .block {
   -webkit-user-select: none;
@@ -76,42 +95,36 @@ body.editing .block .editdiv {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-body.editing .block .editdiv > div {
+body.editing .block .editdiv > button {
+  padding: 0;
   position: absolute;
   display: inline-block;
   top: -10px;
   height: 20px;
   width: 20px;
+  border: 0;
 }
-body.editing .block .editdiv > div, body.editing .block .editdiv > div * {
+body.editing .block .editdiv > button, body.editing .block .editdiv > button * {
   font-size: 20px;
   text-align: center;
   line-height: 1;
 }
-body.editing .block .editdiv > div.dragger {
+body.editing .block .editdiv > button.dragger {
   cursor: move;
   left: 0;
   background: lime;
 }
-body.editing .block .editdiv > div.resizer.smaller {
+body.editing .block .editdiv > button.resizer {
+  display: none;
+}
+body.editing .block .editdiv > button.designer {
   left: 20px;
-  background: orange;
+  background: purple;
 }
-body.editing .block .editdiv > div.resizer.bigger {
+body.editing .block .editdiv > button.remover {
   left: 40px;
-  background: orangered;
-}
-body.editing .block .editdiv > div.remover {
-  left: 60px;
   background: red;
 }
-body.editing #edit-blocks {
-  position: relative;
+body.editing .edittools .addblock {
   display: inline-block;
-  top: 0;
-  left: 0;
-  min-height: 20vh;
-  width: 100%;
-  background-color: orangered;
-  z-index: 10;
 }

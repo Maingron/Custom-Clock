@@ -162,11 +162,15 @@ function addBlock(which, values = {}) {
 
     console.log(config.clock1[config.clock1.length - 1]);
     spawnBlock(config.clock1[config.clock1.length - 1]);
+
+    setDesigner(config.clock1[config.clock1.length - 1]);
 }
 
 
 
 function removeBlock(which) {
+    document.getElementById("designer").disabled = "disabled";
+
     for(var i = parseInt(which.id); i < config.clock1.length; i++) {
         config.clock1[i] = config.clock1[i + 1];
         if(i < config.clock1.length - 1) {
