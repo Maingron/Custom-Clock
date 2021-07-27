@@ -19,43 +19,50 @@
         </div>
 
         <!-- Template section -->
-        <template id="block-hours" description="Displays the current hour">
+        <template id="block-hours" description="lang.DisplaysthecurrentHour">
             |hours|
         </template>
-        <template id="block-minutes" description="Displays the current minute">
+        <template id="block-minutes" description="lang.DisplaysthecurrentMinute">
             |minutes|
         </template>
-        <template id="block-seconds" description="Displays the current second">
+        <template id="block-seconds" description="lang.DisplaysthecurrentSecond">
             |seconds|
         </template>
-        <template id="block-fullclock">
+        <template id="block-milliseconds" description="lang.DisplaysthecurrentMillisecond">
+            |milliseconds|
+        </template>
+        <template id="block-fullclock" description="lang.DisplaysanentireClock">
             |hours|:|minutes|:|seconds|
         </template>
 
 
-        <template id="block-day">
+        <template id="block-day" description="lang.DisplaysthecurrentDay">
             |day|
         </template>
-        <template id="block-month">
+        <template id="block-month" description="lang.DisplaysthecurrentMonth">
             |month|
         </template>
-        <template id="block-year">
+        <template id="block-year" description="lang.DisplaysthecurrentYear">
             |year|
         </template>
-        <template id="block-fulldate">
+        <template id="block-weekdayName" description="lang.DisplaystheNameofToday">
+            |weekdayName|
+        </template>
+        <template id="block-fulldate" description="lang.DisplaystheentireDate">
             |block-year|-|block-month|-|block-day|
         </template>
 
         <template id="block-edit" class="ignore">
             <div class="editdiv">
-                <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)"></div>
-                <div class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>
-                <div class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)"></div>
+                <div class="dragger" onmousedown="handleAction('drag', this.parentElement.parentElement, event)">↝</div>
+                <div class="resizer bigger" onclick="handleAction('resize', this.parentElement.parentElement, event)">+</div>
+                <div class="resizer smaller" onclick="handleAction('resize', this.parentElement.parentElement, event)">-</div>
                 <div class="remover" onclick="removeBlock(this.parentElement.parentElement)">x</div>
             </div>
         </template>
 
         <script src="config.js"></script>
+        <script src="lang.js"></script>
         <script src="scripts.js"></script>
         <script src="edit.js"></script>
     </body>
