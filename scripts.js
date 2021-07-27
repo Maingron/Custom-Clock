@@ -15,6 +15,16 @@ if(localStorage.getItem("config1")) {
         "ticktime": 100, // ms
         "background": "#000",
 
+        "dummyblock": {
+            "block": "",
+            "color": "#ffff00",
+            "background": "transparent",
+            "fontsize": "2rem",
+            "position": ["2rem","4.5rem"], // [x,y]
+            "scale": 1,
+            "id": 9999
+        },
+
         // clocks
         "clock1": [
             {
