@@ -102,13 +102,13 @@ function tick(which) { // Render template values
         return time.getMilliseconds();
 
     } else if(which == "day") {
-        result = time.getDay();
+        result = time.getDate();
         result
         if(result.toString().length == 1) {
             result = "0" + result;
         }
     } else if(which == "month") {
-        result = time.getMonth();
+        result = time.getMonth() + 1; // Months start at 0 and range to 11
         if(result.toString().length == 1) {
             result = "0" + result;
         }
