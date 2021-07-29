@@ -1,2 +1,16 @@
-- name: Code Climate Coverage Action
-  uses: paambaati/codeclimate-action@v2.7.5
+name: Code Climate Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  code-climate:
+    runs-on: ubuntu-latest
+    strategy:
+      m
+    steps:
+      - name: Code Climate Coverage Action
+        uses: paambaati/codeclimate-action@v2.7.5lcov
