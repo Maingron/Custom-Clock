@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Code Climate Coverage Action
-        uses: paambaati/codeclimate-action@v2.7.5lcov
+        uses: paambaati/codeclimate-action@v2.7.5
