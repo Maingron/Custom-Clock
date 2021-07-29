@@ -9,8 +9,6 @@ on:
 jobs:
   code-climate:
     runs-on: ubuntu-latest
-    strategy:
-      m
     steps:
       - name: Code Climate Coverage Action
         uses: paambaati/codeclimate-action@v2.7.5lcov
