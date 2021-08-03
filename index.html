@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Custom Clock</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <main id="main">
@@ -11,7 +11,6 @@
                 <button class="editpen" onclick="config.edit = !config.edit; saveConfig();window.location.reload()">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
                 <button class="addblock" onclick="addBlock('block-fullclock')">+</button> <!-- Save opposite value of config.edit (true -> false)-->
             </div>
-
             <p id="dev-configvalue"></p>
 
         </main>
@@ -76,9 +75,9 @@
             </div>
         </template>
 
-        <script src="config.js"></script>
-        <script src="lang.js"></script>
-        <script src="scripts.js"></script>
-        <script src="edit.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/lang.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/edit.js"></script>
     </body>
 </html>
