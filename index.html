@@ -6,8 +6,6 @@
         <title>Custom Clock</title>
         <link rel="stylesheet" href="css/style.css">
 
-        
-
         <script src="js/config.js"></script>
         <script src="js/lang.js"></script>
     </head>
@@ -22,57 +20,57 @@
 
 
         <fieldset class="designer" id="designer" disabled="disabled">
-            <label for="designer-fontcolor">Fontcolor</label>
+            <label for="designer-fontcolor"><lang>Font color</lang></label>
             <input type="color" id="designer-fontcolor" onchange="designer('color', this.value)">
 
-            <label hidden for="designer-scale">Scale</label>
+            <label hidden for="designer-scale"><lang>Scaling</lang></label>
             <input hidden type="number" min="0" max="8" id="designer-scale" onchange="designer('scale', this.value)">
 
-            <label for="designer-fontsize">Font Size (rem)</label>
+            <label for="designer-fontsize"><lang>Font Size (rem)</lang></label>
             <input type="number" min="0" max="8" id="designer-fontsize" onchange="designer('fontsize', this.value + 'rem')">
 
-            <label for="designer-block">Block Type</label>
+            <label for="designer-block"><lang>Block Type</lang></label>
             <select id="designer-block" onchange="designer('block', this.value)">
             </select>
         </fieldset>
 
 
         <!-- Template section -->
-        <template id="block-hours" description="lang.DisplaysthecurrentHour">
+        <template id="block-hours" description="lang.Displays the current Hour">
             |hours|
         </template>
-        <template id="block-minutes" description="lang.DisplaysthecurrentMinute">
+        <template id="block-minutes" description="lang.Displays the current Minute">
             |minutes|
         </template>
-        <template id="block-seconds" description="lang.DisplaysthecurrentSecond">
+        <template id="block-seconds" description="lang.Displays the current Second">
             |seconds|
         </template>
-        <template id="block-milliseconds" description="lang.DisplaysthecurrentMillisecond">
+        <template id="block-milliseconds" description="lang.Displays the current Millisecond">
             |milliseconds|
         </template>
-        <template id="block-fullclock" description="lang.DisplaysanentireClock">
+        <template id="block-fullclock" description="lang.Displays an entire Clock">
             |hours|:|minutes|:|seconds|
         </template>
 
 
-        <template id="block-timezoneName" description="lang.DisplaystheNameofyourTimezone">
+        <template id="block-timezoneName" description="lang.Displays the Name of your Timezone">
             |timezoneName|
         </template>
 
 
-        <template id="block-day" description="lang.DisplaysthecurrentDay">
+        <template id="block-day" description="lang.Displays the current Day">
             |day|
         </template>
-        <template id="block-month" description="lang.DisplaysthecurrentMonth">
+        <template id="block-month" description="lang.Displays the current Month">
             |month|
         </template>
-        <template id="block-year" description="lang.DisplaysthecurrentYear">
+        <template id="block-year" description="lang.Displays the current Year">
             |year|
         </template>
-        <template id="block-weekdayName" description="lang.DisplaystheNameofToday">
+        <template id="block-weekdayName" description="lang.Displays the Name of Today">
             |weekdayName|
         </template>
-        <template id="block-fulldate" description="lang.DisplaystheentireDate">
+        <template id="block-fulldate" description="lang.Displays the entire Date">
             |block-year|-|block-month|-|block-day|
         </template>
 
@@ -88,7 +86,6 @@
             </div>
         </template>
 
-        
         <script src="js/scripts.js"></script>
     </body>
 </html>
