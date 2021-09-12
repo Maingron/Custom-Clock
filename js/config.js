@@ -15,7 +15,7 @@ if(localStorage.getItem("config1")) {
         "prodticktime": (1000 / 60), // ms
         "ticktime": config.prodticktime, // ms
         "background": "#000", // Background Color of the entire clock
-        "lang": "en", // Language
+        "lang": navigator.language.toLowerCase(), // Language
 
         "dummyblock": { // Dummy block - will be used when adding a new Block
             "block": "", // Block Name (Example: block-hours) (DUMMY)
