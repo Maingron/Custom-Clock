@@ -24,11 +24,11 @@ for(let myTemplate of templates) {
         myTemplate.setAttribute("description", ""); // Fallback if no description is set so we dont get an ugly "null"
     }
 
+    // Lang handling:
     if(myTemplate.getAttribute("description").indexOf("lang.") > -1) { // Take String from langfile but only if expected
         myTemplate.setAttribute("description",lang[myTemplate.getAttribute("description").replace("lang.","")]);
     }
 }
-
 
 
 
@@ -223,15 +223,13 @@ if(config.clock1.length == 0) { // init
 
 
 
-
-
 if(config.edit == true) {
     var summonEditScript = document.createElement("script");
     summonEditScript.src = "js/edit.js"; // Relative to .html file, which uses "js/scripts.js"
     document.head.appendChild(summonEditScript);
 }
 
-
+// Lang handling:
 for(myTag of document.getElementsByTagName("lang")) {
     myTag.innerHTML = lang[myTag.innerHTML]
 }
