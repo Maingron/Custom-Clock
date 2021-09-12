@@ -1,4 +1,28 @@
+var langSpecials = {}; // Some langs have special conditions and stuff - We can use this variable for such.
+
 if(config.lang == "de") {
+    function germanFreundlich(myString) {
+        if(langSpecials.sie == "sie") {
+            switch (myString) {
+                case "dein":
+                    return "Ihr"
+                case "deiner":
+                    return "Ihrer"
+                case "deines":
+                    return "Ihres"
+                case "deinem":
+                    return "Ihrem"
+                case "du":
+                    return "Sie"
+            }
+        }
+        return myString;
+    }
+
+    langSpecials = {
+        "sie": "du" // ["du"|"sie"] // TODO: Make setting / variable
+    }
+
     var lang = { // German (Deutsch)
         "Monday": "Montag",
         "Tuesday": "Dienstag",
@@ -16,7 +40,8 @@ if(config.lang == "de") {
         "DisplaysthecurrentMonth": "Zeigt den aktuellen Monat an",
         "DisplaysthecurrentYear": "Zeigt das aktuelle Jahr an",
         "DisplaystheNameofToday": "Zeigt den Wochentag an",
-        "DisplaystheentireDate": "Zeigt das gesamte Datum an"
+        "DisplaystheentireDate": "Zeigt das gesamte Datum an",
+        "DisplaystheNameofyourTimezone": "Zeigt den Namen " + germanFreundlich("deiner") + " Zeitzone an",
     }
 } else {
     var lang = { // English / Fallback
@@ -36,6 +61,7 @@ if(config.lang == "de") {
         "DisplaysthecurrentMonth": "Displays the current Month",
         "DisplaysthecurrentYear": "Displays the current Year",
         "DisplaystheNameofToday": "Displays the Name of Today",
-        "DisplaystheentireDate": "Displays the entire Date"
+        "DisplaystheentireDate": "Displays the entire Date",
+        "DisplaystheNameofyourTimezone": "Displays the Name of your Timezone",
     }
 }
