@@ -61,18 +61,7 @@ function spawnBlock(which) {
     clock.appendChild(newElement); // Append block to clock frame
 }
 
-window.setInterval(function() {
-    for(let myElement of document.getElementsByClassName("block")) { // Tick the blocks
-        var myTempInnerHTML = document.getElementById(myElement.getAttribute("template")).innerHTML;
-        for(var j = 0; j < myElement.getAttribute("variables"); j++) {
-            myTempInnerHTML = myTempInnerHTML.replace("|" + myTempInnerHTML.split("|")[1] + "|", tick(myTempInnerHTML.split("|")[1])); // Replace variables with actual value
-        }
 
-        myElement.innerHTML = myTempInnerHTML;
-    }
-
-    time = new Date();
-}, config.ticktime)
 
 
 function handleString(whichString) {
@@ -81,6 +70,27 @@ function handleString(whichString) {
     }
     return whichString;
 }
+
+// Ticking
+
+window.setInterval(function() {
+    generalTick()
+}, config.ticktime)
+
+function generalTick() { // Ticks everything; Similar to tick() functions in other programs
+    for(let myElement of document.getElementsByClassName("block")) { // Tick the blocks
+        var myTempInnerHTML = document.getElementById(myElement.getAttribute("template")).innerHTML;
+        for(var j = 0; j < myElement.getAttribute("variables"); j++) {
+            myTempInnerHTML = myTempInnerHTML.replace("|" + myTempInnerHTML.split("|")[1] + "|", tick(myTempInnerHTML.split("|")[1])); // Replace variables with actual value
+        }
+        myElement.innerHTML = myTempInnerHTML;
+    }
+    time = new Date();
+}
+
+generalTick(); // Initial tick so we don't see the template strings when loading the page
+
+
 
 function tick(which) { // Render template values
     var result = "";

@@ -1,7 +1,11 @@
-$editbuttonSize: 20px;
+$editbuttonSize: 24px;
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    background: #000;
 }
 
 body {
@@ -12,12 +16,40 @@ body {
     padding: 0;
     overflow: hidden;
     p,b,a,span,button:not(.editbutton) {
-        color:red;
+        color:#ffff00aa;
     }
 
-    .designer {
+    .designer { // Don't display the designer when not in editing mode
         display: none;
     }
+
+    main {
+        height: 100vh;
+        width: 100%;
+        z-index: 20;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .block {
+        position: absolute;
+        display: inline;
+        padding: .2rem;
+        user-select: none;
+
+        div {
+            display: inline-block;
+            position: relative;
+        }
+
+    }
+    &,* {
+        font-family: -apple-system, system-ui, 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Segoe UI Variable', 'Roboto', 'Tahoma', 'Ubuntu', sans-serif;
+    }
+
 
     .edittools {
         position: fixed;
@@ -28,134 +60,121 @@ body {
         height: auto;
         width: auto;
 
-        .addblock {
-            display: none;
-        }
         &,button {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
+            line-height: 1;
+            padding: 0;
         }
+
         button {
             border: 0;
             background: transparent;
+            height: 3rem;
+            width: 3rem;
             &:hover {
-                background: rgba(255,255,255,.4);
+                background: rgba(255,255,255,.2);
+                color: #ff0;
             }
         }
-    }
 
-    main {
-        height: 100vh;
-        width: 100%;
-        z-index: 20;
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-    }
-    .block {
-        position: absolute;
-        display: inline-block;
-        padding: .2rem;
-        div {
-            display: inline-block;
-            position: relative;
+        .addblock {
+            display: none;
         }
-    }
-    &,* {
-        font-family: -apple-system, system-ui, 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Segoe UI Variable', 'Roboto', 'Tahoma', 'Ubuntu', sans-serif;
     }
 }
 
-body.editing { // When in editing mode
-    min-height: calc(100vh + 80px);
-    overflow: auto;
 
-    code {
-        background-color: orange;
-    }
 
-    select {
-        max-width: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
 
-    #designer {
-        display: inline-block;
-        position: sticky;
-        height: auto;
-        width: 100%;
-        background: rgba(255,255,255,.5);
-        bottom: 0;
-        padding: 1.2rem;
-        box-sizing: border-box;
-        border: 0;
-        margin: 0;
-        overflow: hidden;
-    }
 
-    .block {
-        user-select: none;
-        &>div {
-            .editdiv {
-                display: none;
-            }
+
+
+// Editing:
+
+body {
+    &.editing {
+        min-height: calc(100vh + 80px);
+        overflow: auto;
+
+        code {
+            background-color: orange;
         }
-        .editdiv {
-            position: absolute;
-            height: calc(100% + #{$editbuttonSize} / 2);
+
+        select {
+            max-width: 100%;
             width: 100%;
-            top: -($editbuttonSize / 2);
-            background-color: rgba(255,0,0,.2);
-            outline: 1px solid red;
-            border-top: ($editbuttonSize / 2) solid blue;
+            overflow: hidden;
+        }
+
+        #designer {
+            display: block;
+            z-index: 21;
+            position: sticky;
+            height: auto;
+            width: 100%;
+            background: rgba(255,255,255,.5);
+            bottom: 0;
+            padding: 1.2rem;
             box-sizing: border-box;
-            >button {
-                padding:0;
-                position: absolute;
-                display: inline-block;
-                top:-($editbuttonSize / 2);
-                height: $editbuttonSize;
-                width: $editbuttonSize;
-                border:0;
-                &,* {
-                    font-size: $editbuttonSize;
-                    text-align: center;
-                    line-height: 1;
-                }
-                &.dragger {
-                    cursor: move;
-                    left: 0;
-                    background: lime;
-                }
-                &.resizer {
+            border: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .block {
+            &>div {
+                .editdiv {
                     display: none;
-                    // &.smaller {
-                    //     left: 1 * $editbuttonSize;
-                    //     background: orange;
-                    // }
-                    // &.bigger {
-                    //     left: 2 * $editbuttonSize;
-                    //     background: orangered;
-                    // }
-                }
-
-                &.designer {
-                    left: 1 * $editbuttonSize;
-                    background: purple;
-                }
-
-                &.remover {
-                    left: 2 * $editbuttonSize;
-                    background: red;
                 }
             }
 
-        }
-    }
 
-    .edittools {
-        .addblock {
-            display: inline-block;
+            .editdiv {
+                position: absolute;
+                height: calc(100%);
+                width: 100%;
+                background-color: rgba(255,0,0,.2);
+                outline: 1px solid #ff0;
+                box-sizing: border-box;
+                >button {
+                    padding: 0;
+                    position: absolute;
+                    display: inline-block;
+                    height: $editbuttonSize;
+                    width: $editbuttonSize;
+                    border:0;
+                    z-index: 9;
+                    &,* {
+                        font-size: $editbuttonSize;
+                        text-align: center;
+                        line-height: 1;
+                    }
+                    &.dragger {
+                        cursor: move;
+                        left: 0;
+                        background: lime;
+                    }
+                    &.resizer {
+                        display: none;
+                    }
+
+                    &.designer {
+                        left: 1 * $editbuttonSize;
+                        background: purple;
+                    }
+
+                    &.remover {
+                        left: 2 * $editbuttonSize;
+                        background: red;
+                    }
+                }
+            }
+        }
+
+        .edittools {
+            .addblock {
+                display: inline-block;
+            }
         }
     }
 }

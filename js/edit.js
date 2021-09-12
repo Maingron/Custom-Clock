@@ -6,16 +6,16 @@ if(config.edit == true) { // Only load edit tools if we want to edit
 
     document.body.classList.add("editing");
 
-    window.setTimeout(function() { // Make sure we don't end up with this pasted everywhere by waiting until everything else is rendered
+    window.setTimeout(function() { // Make sure we don't end up with this pasted everywhere by waiting a duration of 0
         for(let myTemplate of templates) {
             myTemplate.innerHTML = document.getElementById("block-edit").innerHTML + myTemplate.innerHTML;
         }
-    }, config.ticktime);
+    }, 0);
 
     function drag(which) {
         if(mouseClick == true) {
-            which.style.left = mousePos[0] + "px";
-            which.style.top = mousePos[1] + "px";
+            which.style.left = mousePos[0] - 12 + "px"; // 12 is half the size of one edit button
+            which.style.top = mousePos[1] - 12 + "px"; // 12 is half the size of one edit button
             // which.style.top = mousePos[1] - (which.offsetHeight / 2) + "px";
 
             if(which.id) {
@@ -77,6 +77,8 @@ if(config.edit == true) { // Only load edit tools if we want to edit
         console.log(which);
         designerApplyTo = which.id;
 
+        console.log(which);
+
         // document.getElementById("designer").style.left = config.clock1[designerApplyTo].position[0];
         // document.getElementById("designer").style.top = -60 + parseInt(config.clock1[designerApplyTo].position[1]) + "px";
     }
@@ -90,7 +92,6 @@ if(config.edit == true) { // Only load edit tools if we want to edit
         spawnBlock(config.clock1[designerApplyTo]); // Respawn
 
         saveConfig();
-
     }
 
 
