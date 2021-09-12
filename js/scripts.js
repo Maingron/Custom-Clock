@@ -233,3 +233,7 @@ if(config.edit == true) {
     document.head.appendChild(summonEditScript);
 }
 
+
+for(myTag of document.getElementsByTagName("lang")) {
+    myTag.innerHTML = lang[myTag.innerHTML]
+}
