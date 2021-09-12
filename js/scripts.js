@@ -83,46 +83,64 @@ function handleString(whichString) {
 
 function tick(which) { // Render template values
     var result = "";
-    if(which == "hours") {
-        result = time.getHours();
-        if(result.toString().length == 1) {
-            result = "0" + result;
-        }
-    } else if(which == "minutes") {
-        result = time.getMinutes();
-        if(result.toString().length == 1) {
-            result = "0" + result;
-        }
-    } else if(which == "seconds") {
-        result = time.getSeconds();
-        if(result.toString().length == 1) {
-            result = "0" + result;
-        }
-    } else if(which == "milliseconds") {
-        return time.getMilliseconds();
+    var minlength = 0; // If shorter we'll prepend 0's
 
-    } else if(which == "day") {
-        result = time.getDate();
-        result
-        if(result.toString().length == 1) {
-            result = "0" + result;
-        }
-    } else if(which == "month") {
-        result = time.getMonth() + 1; // Months start at 0 and range to 11
-        if(result.toString().length == 1) {
-            result = "0" + result;
-        }
-    } else if(which == "year") {
-        return time.getFullYear();
-    } else if(which == "weekdayName") {
-        return returnWeekday(time.getDay());
-    } else if(which.includes("block-")) {
-        return "<div>" + handleString(document.getElementById(which).innerHTML) + "</div>"; // Take from templates
-    } else {
-        return which;
+    switch (which) {
+        case "hours":
+            minlength = 2;
+            result = time.getHours();
+            break;
+
+        case "minutes":
+            minlength = 2;
+            result = time.getMinutes();
+            break;
+
+        case "seconds":
+            minlength = 2;
+            result = time.getSeconds();
+            break;
+
+        case "milliseconds":
+            result = time.getMilliseconds();
+            break;
+
+        case "day":
+            minlength = 2;
+            result = time.getDate();
+            break;
+
+        case "weekdayName":
+            result = returnWeekday(time.getDay());
+            break;
+
+        case "timezoneName":
+            result = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            break;
+
+        case "month":
+            minlength = 2;
+            result = time.getMonth() + 1; // Months start at 0 and range to 11
+            break;
+
+        case "year":
+            result = time.getFullYear();
+            break;
+
+        default:
+
+            if(which.includes("block-")) {
+                result = "<div>" + handleString(document.getElementById(which).innerHTML) + "</div>"; // Take from templates
+            } else {
+                result = which;
+            }
     }
 
-    return result;
+    while(result.toString().length < minlength) { // If we still need to prepend 0s
+        result = "0" + result;
+    }
+
+    return result; // Return our result
 }
 
 function returnWeekday(which) {
