@@ -81,6 +81,8 @@ if(config.edit == true) { // Only load edit tools if we want to edit
         // document.getElementById("designer").style.top = -60 + parseInt(config.clock1[designerApplyTo].position[1]) + "px";
     }
 
+    setDesigner(config.clock1[config.clock1.length - 1]);
+
     function designer(key, value) {
         config.clock1[designerApplyTo][key] = value;
 

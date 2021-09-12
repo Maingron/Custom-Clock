@@ -193,8 +193,6 @@ function addBlock(which, values = {}) {
 
     console.log(config.clock1[config.clock1.length - 1]);
     spawnBlock(config.clock1[config.clock1.length - 1]);
-
-    setDesigner(config.clock1[config.clock1.length - 1]);
 }
 
 
