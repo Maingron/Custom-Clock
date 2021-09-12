@@ -3,9 +3,12 @@ var time = new Date();
 
 // Modify templates
 var templates = document.getElementsByTagName("template");
+// myTemplate is the template we're currently working on
 for(let myTemplate of templates) {
     var charOccs = 0;
-    for(var i = 0; i < myTemplate.innerHTML.length; i++) {
+
+
+    for(var i = 0; i < myTemplate.innerHTML.length; i++) { // Check each character; If is "|"
         if(myTemplate.innerHTML[i] == "|") {
             charOccs++;
         }
@@ -15,6 +18,8 @@ for(let myTemplate of templates) {
 
 
 
+    // Description
+
     if(!myTemplate.getAttribute("description")) {
         myTemplate.setAttribute("description", ""); // Fallback if no description is set so we dont get an ugly "null"
     }
@@ -23,6 +28,8 @@ for(let myTemplate of templates) {
         myTemplate.setAttribute("description",lang[myTemplate.getAttribute("description").replace("lang.","")]);
     }
 }
+
+
 
 
 for (let myClock1 of config.clock1) { // For every block in config of clock1
@@ -36,7 +43,6 @@ function spawnBlock(which) {
     newElement.style.top = which.position[1];
     newElement.style.left = which.position[0];
     newElement.style.fontSize = which.fontsize;
-
     newElement.style.scale = which.scale;
 
     newElement.innerHTML = document.getElementById(which.block).innerHTML;
@@ -45,28 +51,23 @@ function spawnBlock(which) {
 
 
     newElement.setAttribute("variables",document.getElementById(which.block).getAttribute("variables"));
-    // newElement.id = [i];
     newElement.classList.add("block");
     newElement.setAttribute("template",which.block); // We will access the variables within the template later so we can refresh everything
-
 
     // if(newElement.innerHTML.includes("|block-")) {
     //     newElement.classList.add("notick");
     // }
 
     clock.appendChild(newElement); // Append block to clock frame
-
 }
 
 window.setInterval(function() {
     for(let myElement of document.getElementsByClassName("block")) { // Tick the blocks
-        // if(myElement.className)
         var myTempInnerHTML = document.getElementById(myElement.getAttribute("template")).innerHTML;
         for(var j = 0; j < myElement.getAttribute("variables"); j++) {
             myTempInnerHTML = myTempInnerHTML.replace("|" + myTempInnerHTML.split("|")[1] + "|", tick(myTempInnerHTML.split("|")[1])); // Replace variables with actual value
         }
 
-        // console.log(myElement.innerHTML);
         myElement.innerHTML = myTempInnerHTML;
     }
 
@@ -174,16 +175,6 @@ function reset() {
     document.location.reload();
 }
 
-// window.setInterval(function() {
-//     document.getElementById("dev-configvalue").innerHTML = JSON.stringify(config);
-// },config.ticktime)
-
-
-
-if(config.edit == true) {
-    document.body.classList.add("editing");
-}
-
 clock.style.background = config.background;
 
 
@@ -230,5 +221,15 @@ function removeBlock(which) {
 if(config.clock1.length == 0) { // init
     addBlock("block-fullclock", {"color":"#fff", "position":["100px","100px"]});
     addBlock("block-fulldate", {"color": "#ccc", "position": ["100px","150px"]});
+}
+
+
+
+
+
+if(config.edit == true) {
+    var summonEditScript = document.createElement("script");
+    summonEditScript.src = "js/edit.js"; // Relative to .html file, which uses "js/scripts.js"
+    document.head.appendChild(summonEditScript);
 }
 

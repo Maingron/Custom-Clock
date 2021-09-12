@@ -41,6 +41,7 @@ if(config.edit == true) { // Ensure editing pleasure
     config.ticktime = config.prodticktime;
 }
 
+
 function loadConfig() {
     return JSON.parse(localStorage.getItem("config1"));
 }

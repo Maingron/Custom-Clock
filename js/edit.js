@@ -4,6 +4,8 @@ if(config.edit == true) { // Only load edit tools if we want to edit
     var mouseDrag = null; // Block to drag
     var mouseResize = null; // Block to resize
 
+    document.body.classList.add("editing");
+
     window.setTimeout(function() { // Make sure we don't end up with this pasted everywhere by waiting until everything else is rendered
         for(let myTemplate of templates) {
             myTemplate.innerHTML = document.getElementById("block-edit").innerHTML + myTemplate.innerHTML;
@@ -120,7 +122,6 @@ if(config.edit == true) { // Only load edit tools if we want to edit
         console.log(myTemplate.innerHTML);
         if(!myTemplate.classList.contains("ignore")) {
             document.getElementById("designer-block").innerHTML += "<option value='" + myTemplate.id + "'>" + myTemplate.id + "&nbsp;&nbsp;&nbsp;"+myTemplate.getAttribute("description")+"&nbsp;&nbsp;&nbsp;<code>" + myTemplate.innerHTML + "</code></option>";
-
         }
     }
 }
