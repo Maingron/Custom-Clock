@@ -139,9 +139,11 @@ function returnWeekday(which) {
             return lang.Friday
         case 6:
             return lang.Saturday
+        case 0:
         case 7:
             return lang.Sunday
         default:
+            console.error("returnWeekday() - Day doesn't exist")
             return "Day of Week: " + which
     }
 }
