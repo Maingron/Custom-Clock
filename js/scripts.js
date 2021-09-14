@@ -237,6 +237,10 @@ if(config.edit == true) {
     var summonEditScript = document.createElement("script");
     summonEditScript.src = "js/edit.js"; // Relative to .html file, which uses "js/scripts.js"
     document.head.appendChild(summonEditScript);
+
+    document.title += " - Edit Mode";
+} else {
+    document.title += " - View Mode";
 }
 
 // Lang handling:
