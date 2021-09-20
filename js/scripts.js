@@ -227,8 +227,8 @@ function removeBlock(which) {
 
 
 if(config.clock1.length == 0) { // init
-    addBlock("block-fullclock", {"color":"#fff", "position":["100px","100px"]});
-    addBlock("block-fulldate", {"color": "#ccc", "position": ["100px","150px"]});
+    addBlock("block-fullclock", {"color":"#ffffff", "position":["100px","100px"]});
+    addBlock("block-fulldate", {"color": "#cccccc", "position": ["100px","150px"]});
 }
 
 
