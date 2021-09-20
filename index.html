@@ -20,18 +20,26 @@
 
 
         <fieldset class="designer" id="designer" disabled="disabled">
-            <label for="designer-fontcolor"><lang>Font color</lang></label>
-            <input type="color" id="designer-fontcolor" onchange="designer('color', this.value)">
+            <div>
+                <label for="designer-fontcolor"><lang>Font color</lang></label>
+                <input type="color" id="designer-fontcolor" onchange="designer('color', this.value)">
+            </div>
 
-            <label hidden for="designer-scale"><lang>Scaling</lang></label>
-            <input hidden type="number" min="0" max="8" id="designer-scale" onchange="designer('scale', this.value)">
+            <div style="display: none;">
+                <label hidden for="designer-scale"><lang>Scaling</lang></label>
+                <input hidden type="number" min="0" max="8" id="designer-scale" onchange="designer('scale', this.value)">
+            </div>
 
-            <label for="designer-fontsize"><lang>Font Size (rem)</lang></label>
-            <input type="number" min="0" max="8" id="designer-fontsize" onchange="designer('fontsize', this.value + 'rem')">
+            <div>
+                <label for="designer-fontsize"><lang>Font Size (rem)</lang></label>
+                <input type="number" min="0" max="8" id="designer-fontsize" onchange="designer('fontsize', this.value + 'rem')">
+            </div>
 
-            <label for="designer-block"><lang>Block Type</lang></label>
-            <select id="designer-block" onchange="designer('block', this.value)">
-            </select>
+            <div>
+                <label for="designer-block"><lang>Block Type</lang></label>
+                <select id="designer-block" onchange="designer('block', this.value)">
+                </select>
+            </div>
         </fieldset>
 
 
