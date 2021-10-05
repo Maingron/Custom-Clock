@@ -247,3 +247,5 @@ if(config.edit == true) {
 for(myTag of document.getElementsByTagName("lang")) {
     myTag.innerHTML = lang[myTag.innerHTML]
 }
+
+document.getElementsByTagName("html")[0].setAttribute("lang",lang["--htmllang"]); // Set language of page - Fixes translation popup

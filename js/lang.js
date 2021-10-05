@@ -24,6 +24,7 @@ if(config.lang == "de") {
     }
 
     var lang = { // German (Deutsch)
+        "--htmllang": "de",
         "Monday": "Montag",
         "Tuesday": "Dienstag",
         "Wednesday": "Mittwoch",
@@ -49,6 +50,7 @@ if(config.lang == "de") {
     }
 } else {
     var lang = { // English / Fallback
+        "--htmllang": "en",
         "Monday": "Monday",
         "Tuesday": "Tuesday",
         "Wednesday": "Wednesday",
