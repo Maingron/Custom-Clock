@@ -43,7 +43,7 @@
     <body class="clock">
         <main id="main">
             <div class="edittools">
-                <button class="trashbin" ondblclick="window.alert('Resetting Clock, click Ok to proceed, close tab/window to abort'); reset();" title="Doubleclick to reset to default settings">🗑</button>
+                <button class="trashbin" ondblclick="window.alert(lang.alert__resetting_clock ?? 'Resetting Clock, click Ok to proceed, close tab/window to abort'); reset();" title="Doubleclick to reset to default settings">🗑</button>
                 <button class="addblock" onclick="addBlock('block-fullclock')" title="Add new block">+</button> <!-- Save opposite value of config.edit (true -> false)-->
                 <button class="editpen" onclick="config.edit = !config.edit; saveConfig();window.location.reload()" title="Switch Edit/View mode">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
             </div>

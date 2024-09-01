@@ -46,7 +46,8 @@ if(config.lang == "de") {
         "Font color": "Schriftfarbe",
         "Scaling": "Skalierung",
         "Font Size (rem)": "Schriftgröße (rem)",
-        "Block Type": "Block Typ"
+        "Block Type": "Block Typ",
+        "alert__resetting_clock": "Resetting Clock, click Ok to proceed, close tab/window to abort"
     }
 } else {
     var lang = { // English / Fallback
@@ -72,6 +73,7 @@ if(config.lang == "de") {
         "Font color": "Font color",
         "Scaling": "Scaling",
         "Font Size (rem)": "Font Size (rem)",
-        "Block Type": "Block Type"
+        "Block Type": "Block Type",
+        "alert__resetting_clock": "Uhr wird zurückgesetzt. Ok klicken, um fortzufahren, Tab/Fenster schließen, um abzubrechen"
     }
 }
