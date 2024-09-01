@@ -12,10 +12,10 @@
                 if(window.self == window.top) {
                     if(window.navigator.userAgent.indexOf("itch/") > 10 || window.location.protocol.indexOf("itch-cave") > -1) {
                         document.body.innerHTML = "<iframe src='index.html?isIframe=true&isItch=true' id='itchframe'></iframe>";
-                    }
 
-                    config.edit = false;
-                    document.body.classList.remove("editing");
+                        config.edit = false;
+                        document.body.classList.remove("editing");
+                    }
                 }
             });
         </script>
