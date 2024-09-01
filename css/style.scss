@@ -11,6 +11,8 @@ html, body {
 
 html:has(.clock) {
     background: #000;
+    color-scheme: dark;
+    color: #fff;
 }
 
 body.clock {
@@ -144,23 +146,25 @@ body.clock {
 
             .editdiv {
                 position: absolute;
-                height: calc(100%);
+                height: 100%;
                 width: 100%;
                 background-color: rgba(255,0,0,.2);
                 outline: 1px solid #ff0;
                 box-sizing: border-box;
+
                 >button {
                     padding: 0;
                     position: absolute;
                     display: inline-block;
                     height: $editbuttonSize;
                     width: $editbuttonSize;
-                    border:0;
+                    border: 0;
                     z-index: 9;
                     &,* {
-                        font-size: $editbuttonSize;
+                        font-size: $editbuttonSize - 4px;
                         text-align: center;
                         line-height: 1;
+                        color: #000;
                     }
                     &.dragger {
                         cursor: move;
@@ -173,7 +177,7 @@ body.clock {
 
                     &.designer {
                         left: 1 * $editbuttonSize;
-                        background: purple;
+                        background: #b4b;
                     }
 
                     &.remover {
