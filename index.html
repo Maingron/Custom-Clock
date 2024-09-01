@@ -27,8 +27,9 @@
     <body>
         <main id="main">
             <div class="edittools">
-                <button class="editpen" onclick="config.edit = !config.edit; saveConfig();window.location.reload()">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
-                <button class="addblock" onclick="addBlock('block-fullclock')">+</button> <!-- Save opposite value of config.edit (true -> false)-->
+                <button class="trashbin" ondblclick="window.alert('Resetting Clock, click Ok to proceed, close tab/window to abort'); reset();" title="Doubleclick to reset to default settings">🗑</button>
+                <button class="addblock" onclick="addBlock('block-fullclock')" title="Add new block">+</button> <!-- Save opposite value of config.edit (true -> false)-->
+                <button class="editpen" onclick="config.edit = !config.edit; saveConfig();window.location.reload()" title="Switch Edit/View mode">✎</button> <!-- Save opposite value of config.edit (true -> false)-->
             </div>
             <p id="dev-configvalue"></p>
         </main>

@@ -8,7 +8,6 @@ html, body {
     margin: 0;
     padding: 0;
     background: #000;
-    overflow: hidden;
 }
 
 body {
@@ -97,7 +96,8 @@ body {
             }
         }
 
-        .addblock {
+        .addblock,
+        .trashbin {
             display: none;
         }
     }
@@ -196,8 +196,16 @@ body {
         }
 
         .edittools {
-            .addblock {
+            .addblock,
+            .trashbin {
                 display: inline-block;
+            }
+
+            .trashbin {
+                &:hover,
+                &:focus-visible {
+                    color: red;
+                }
             }
         }
     }
