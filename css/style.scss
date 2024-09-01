@@ -4,17 +4,37 @@ $editbuttonSize: 24px;
     box-sizing: border-box;
 }
 
-html {
+html, body {
+    margin: 0;
+    padding: 0;
     background: #000;
+    overflow: hidden;
 }
 
 body {
     font-size: 1.4rem;
-    margin: 0;
     display: block;
     position: relative;
-    padding: 0;
     overflow: hidden;
+
+    iframe#itchframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border: 0px solid transparent !important;
+        outline: 0px solid transparent !important;
+        background-color: #000;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &:has(iframe#itchframe) {
+        overflow: hidden !important;
+    }
+
     p,b,a,span,button:not(.editbutton) {
         color:#ffff00aa;
     }
