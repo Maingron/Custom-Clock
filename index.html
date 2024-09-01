@@ -8,16 +8,31 @@
         <link rel="shortcut icon" href="logo.png" type="image/png">
 
         <script>
-            // If using itch.io client, we need to run inside an iframe, because itch is buggy
             window.addEventListener("DOMContentLoaded", function() {
+                let triggerIsNotClock = false;
+                
                 if(window.self == window.top) {
                     if(window.navigator.userAgent.indexOf("itch/") > 10 || window.location.protocol.indexOf("itch-cave") > -1) {
+                        // If using itch.io client, we need to run inside an iframe, because itch is buggy
+                        triggerIsNotClock = true;
                         document.body.innerHTML = "<iframe src='index.html?isIframe=true&isItch=true' id='itchframe'></iframe>";
-
-                        config.edit = false;
-                        document.body.classList.remove("editing");
-                        document.title = "Maingrons Custom Clock";
+                        document.body.classList.add("hasiframe");
                     }
+                }
+
+                if(window.location.protocol.indexOf("http") > -1 && window.location.host.indexOf("itch.zone") > -1) {
+                    // If embedded on Itch project page, display only the logo
+                    triggerIsNotClock = true;
+                    document.body.classList.add("logoonly");
+                    document.body.innerHTML = `
+                        <img src="logo.png" alt="">
+                    `;
+                }
+
+                if(triggerIsNotClock) {
+                    config.edit = false;
+                    document.body.classList.remove("clock");
+                    document.title = "Maingrons Custom Clock";
                 }
             });
         </script>
@@ -25,7 +40,7 @@
         <script src="js/config.js"></script>
         <script src="js/lang.js"></script>
     </head>
-    <body>
+    <body class="clock">
         <main id="main">
             <div class="edittools">
                 <button class="trashbin" ondblclick="window.alert('Resetting Clock, click Ok to proceed, close tab/window to abort'); reset();" title="Doubleclick to reset to default settings">🗑</button>

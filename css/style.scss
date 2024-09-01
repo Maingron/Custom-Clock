@@ -7,28 +7,17 @@ $editbuttonSize: 24px;
 html, body {
     margin: 0;
     padding: 0;
+}
+
+html:has(.clock) {
     background: #000;
 }
 
-body {
+body.clock {
     font-size: 1.4rem;
     display: block;
     position: relative;
     overflow: hidden;
-
-    iframe#itchframe {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        border: 0px solid transparent !important;
-        outline: 0px solid transparent !important;
-        background-color: #000;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
 
     &:has(iframe#itchframe) {
         overflow: hidden !important;
@@ -111,7 +100,7 @@ body {
 
 // Editing:
 
-body {
+body.clock {
     &.editing {
         min-height: calc(100vh + 80px);
         overflow: auto;
@@ -208,5 +197,39 @@ body {
                 }
             }
         }
+    }
+}
+
+// Others:
+
+body.logoonly {
+    img {
+        height: 100vmin;
+        width: 100vmin;
+        aspect-ratio: 1/1;
+        display: inline-block;
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        image-rendering: pixelated;
+    }
+}
+
+
+body.hasiframe {
+    iframe#itchframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border: 0px solid transparent !important;
+        outline: 0px solid transparent !important;
+        background-color: #000;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
     }
 }
