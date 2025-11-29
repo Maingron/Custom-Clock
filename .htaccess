@@ -1,10 +1,33 @@
 Options All -Indexes
 AddDefaultCharset utf-8
 
-<FilesMatch "\.(?:pdn|scss|gitignore)>
+# Block access to sensitive files
+<FilesMatch "\.(?:pdn|scss|gitignore|htaccess)$">
 	Order allow,deny
 	Deny from all
 </FilesMatch>
 
+# Block access to directories
 RedirectMatch 403 /\.git
 RedirectMatch 403 /\.vscode
+RedirectMatch 403 /\.github
+
+# Browser caching for static assets
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/html "access plus 1 hour"
+	ExpiresByType text/css "access plus 1 week"
+	ExpiresByType application/javascript "access plus 1 week"
+	ExpiresByType image/png "access plus 1 month"
+	ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+	<FilesMatch "\.(css|js)$">
+		Header set Cache-Control "max-age=604800, public"
+	</FilesMatch>
+	<FilesMatch "\.(png|ico)$">
+		Header set Cache-Control "max-age=2592000, public"
+	</FilesMatch>
+</IfModule>
