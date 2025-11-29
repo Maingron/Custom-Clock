@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Crawl-delay: 2
+
+Host: clock.maingron.com
